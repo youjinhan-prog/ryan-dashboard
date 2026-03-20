@@ -285,13 +285,13 @@
 </header>
 
 <div class="tabs">
-  <div class="tab active" onclick="showTab('overview')">📈 전체 개요</div>
-  <div class="tab" onclick="showTab('form4')">🎓 Form 4 (현재)</div>
-  <div class="tab" onclick="showTab('form3')">📚 Form 3 (이전)</div>
-  <div class="tab" onclick="showTab('subjects')">🔬 과목별 분석</div>
-  <div class="tab" onclick="showTab('comments')">💬 선생님 코멘트</div>
-  <div class="tab" onclick="showTab('gpa')">📊 GPA & 점수</div>
-  <div class="tab" onclick="showTab('strategy')">🎯 입시 전략</div>
+  <div class="tab active" onclick="showTab('overview',this)">📈 전체 개요</div>
+  <div class="tab" onclick="showTab('form4',this)">🎓 Form 4 (현재)</div>
+  <div class="tab" onclick="showTab('form3',this)">📚 Form 3 (이전)</div>
+  <div class="tab" onclick="showTab('subjects',this)">🔬 과목별 분석</div>
+  <div class="tab" onclick="showTab('comments',this)">💬 선생님 코멘트</div>
+  <div class="tab" onclick="showTab('gpa',this)">📊 GPA & 점수</div>
+  <div class="tab" onclick="showTab('strategy',this)">🎯 입시 전략</div>
 </div>
 
 <main>
@@ -1351,11 +1351,11 @@
 
 <script>
 // Tab switching
-function showTab(id) {
+function showTab(id, el) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
+  (el || event.currentTarget).classList.add('active');
 }
 
 // Grade to numeric helper

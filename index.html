@@ -1360,18 +1360,16 @@ function showTab(id) {
   document.querySelector('[data-tab="' + id + '"]').classList.add('active');
 }
 
-// Attach events after DOM is ready — covers both click and touchend for iOS
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.tab').forEach(function(tab) {
-    var id = tab.getAttribute('data-tab');
-    tab.addEventListener('click', function(e) {
-      e.preventDefault();
-      showTab(id);
-    });
-    tab.addEventListener('touchend', function(e) {
-      e.preventDefault();
-      showTab(id);
-    });
+// Attach click + touchend events directly (script is at bottom of body, DOM already ready)
+document.querySelectorAll('.tab').forEach(function(tab) {
+  var id = tab.getAttribute('data-tab');
+  tab.addEventListener('click', function(e) {
+    e.preventDefault();
+    showTab(id);
+  });
+  tab.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    showTab(id);
   });
 });
 
